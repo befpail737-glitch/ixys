@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Select IXYS IGBTs for Motor Drive Applications - Technical Article - LiTong</title>
+    <meta name="description" content="Technical application note on selecting IXYS IGBTs for motor drive applications including key parameters, thermal considerations, and design examples.">
+    <meta name="keywords" content="IXYS IGBT, motor drive, application note, power electronics, IGBT selection">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="How to Select IXYS IGBTs for Motor Drive Applications - Technical Article - LiTong">
+    <meta property="og:description" content="Technical application note on selecting IXYS IGBTs for motor drive applications including key parameters, thermal considerations, and design examples.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ixys.elec-distributor.com/support/application-notes/how-to-select-ixys-igbt-motor-drive/">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ixys.elec-distributor.com/support/application-notes/how-to-select-ixys-igbt-motor-drive/">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How to Select IXYS IGBTs for Motor Drive Applications",
+      "description": "Technical application note on selecting IXYS IGBTs for motor drive applications including key parameters, thermal considerations, and design examples.",
+      "author": {
+        "@type": "Person",
+        "name": "LiTong FAE Team"
+      },
+      "datePublished": "2023-05-15",
+      "dateModified": "2023-05-15",
+      "publisher": {
+        "@type": "Organization",
+        "name": "LiTong Group",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ixys.elec-distributor.com/images/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://ixys.elec-distributor.com/support/application-notes/how-to-select-ixys-igbt-motor-drive/"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ixys.elec-distributor.com/"
+        },{
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Support",
+          "item": "https://ixys.elec-distributor.com/support/"
+        },{
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Application Notes",
+          "item": "https://ixys.elec-distributor.com/support/application-notes/"
+        },{
+          "@type": "ListItem",
+          "position": 4,
+          "name": "How to Select IXYS IGBTs for Motor Drive Applications",
+          "item": "https://ixys.elec-distributor.com/support/application-notes/how-to-select-ixys-igbt-motor-drive/"
+        }]
+      }
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/support.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="main-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <span class="contact-item">
+                        <i class="icon-whatsapp"></i>
+                        <a href="https://wa.me/8615013702378" target="_blank">WhatsApp: +86 15013702378</a>
+                    </span>
+                    <span class="contact-item">
+                        <i class="icon-wechat"></i>
+                        WeChat: +86 18612518271
+                    </span>
+                </div>
+                <div class="social-links">
+                    <a href="#" target="_blank" aria-label="LinkedIn">LI</a>
+                    <a href="#" target="_blank" aria-label="Twitter">TW</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <div class="logo">
+                    <a href="/" aria-label="LiTong Home">
+                        <img src="../../images/logo.svg" alt="LiTong Logo - Official IXYS Distributor" width="150" height="50">
+                    </a>
+                </div>
+                
+                <nav class="main-nav" role="navigation">
+                    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                        <span class="hamburger"></span>
+                        <span class="hamburger"></span>
+                        <span class="hamburger"></span>
+                    </button>
+                    
+                    <ul class="nav-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products/">Products</a></li>
+                        <li><a href="/solutions/">Solutions</a></li>
+                        <li><a href="/support/" aria-current="page">Support</a></li>
+                        <li><a href="/news/">News</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+        <div class="container">
+            <ol>
+                <li><a href="/">Home</a></li>
+                <li><a href="/support/">Support</a></li>
+                <li><a href="/support/application-notes/">Application Notes</a></li>
+                <li aria-current="page">How to Select IXYS IGBTs for Motor Drive Applications</li>
+            </ol>
+        </div>
+    </nav>
+
+    <main>
+        <article class="support-detail">
+            <div class="container">
+                <header class="support-article-header">
+                    <h1>How to Select IXYS IGBTs for Motor Drive Applications</h1>
+                    <div class="support-article-meta">
+                        <div class="author-info">
+                            <div class="author-avatar">L</div>
+                            <span>LiTong FAE Team</span>
+                        </div>
+                        <time datetime="2023-05-15">May 15, 2023</time>
+                        <span>Technical Article</span>
+                    </div>
+                </header>
+
+                <div class="article-content">
+                    <h2>Introduction</h2>
+                    <p>Selecting the right IGBT for motor drive applications requires careful consideration of multiple parameters to ensure optimal performance, efficiency, and reliability. This application note provides guidelines for selecting IXYS IGBTs specifically for variable frequency drive (VFD) applications.</p>
+
+                    <h2>Key Parameters for Motor Drive Applications</h2>
+                    <p>When selecting an IGBT for motor drive applications, the following parameters are critical:</p>
+
+                    <h3>1. Voltage Rating</h3>
+                    <p>The IGBT's voltage rating should be at least 1.5 to 2 times the DC bus voltage of the drive system to provide adequate margin for voltage spikes and ringing caused by parasitic inductances in the circuit. For example, for a 600V DC bus, an IGBT with at least 1200V rating is recommended.</p>
+
+                    <h3>2. Current Rating</h3>
+                    <p>The continuous collector current rating of the IGBT must exceed the RMS current demand of the motor. A safety margin of at least 20% above the maximum anticipated current should be applied. Additionally, consider the peak current capability during acceleration and overload conditions.</p>
+
+                    <h3>3. Switching Frequency</h3>
+                    <p>Motor drives typically operate at switching frequencies between 2kHz and 16kHz. Lower frequencies result in lower switching losses but higher motor noise and torque ripple. Higher frequencies provide smoother motor operation but increase switching losses. Choose an IGBT optimized for your specific switching frequency:</p>
+                    <ul>
+                        <li>For frequencies below 8kHz: Use low VCE(sat) devices</li>
+                        <li>For frequencies above 8kHz: Use devices with optimized switching characteristics</li>
+                    </ul>
+
+                    <h3>4. Thermal Performance</h3>
+                    <p>Motor drives often operate in harsh thermal environments. Consider the IGBT's thermal resistance (Rth) and maximum junction temperature. The thermal design should ensure the junction temperature remains within safe limits under all operating conditions.</p>
+
+                    <h2>IXYS IGBT Series for Motor Drives</h2>
+                    <p>IXYS offers several IGBT families optimized for motor drive applications:</p>
+
+                    <h3>Trench Field Stop IGBTs</h3>
+                    <p>These devices feature low switching losses and good forward voltage drop, making them ideal for medium-frequency motor drives (4-8kHz). They offer a good balance between conduction and switching losses.</p>
+
+                    <h3>Application Optimized IGBTs</h3>
+                    <p>IXYS provides application-optimized IGBTs specifically designed for motor drives. These devices feature soft turn-off characteristics that reduce oscillations and electromagnetic interference (EMI) in motor drive applications.</p>
+
+                    <h2>Design Example: 7.5kW Motor Drive</h2>
+                    <p>For a 7.5kW three-phase induction motor drive with a 540V DC bus, we recommend the following component selection:</p>
+
+                    <h3>IGBT Selection</h3>
+                    <p>Based on the 540V DC bus voltage and approximately 30A RMS motor current, we recommend the <a href="../../products/igbt-modules/ixgd30n120/">IXGD30N120</a> - a 1200V, 30A IGBT in TO-247 package. This device provides:</p>
+                    <ul>
+                        <li>1200V rating providing 2.2x safety margin over 540V bus</li>
+                        <li>30A rating suitable for the application with margin</li>
+                        <li>Low VCE(sat) and optimized switching characteristics</li>
+                        <li>Soft turn-off for reduced EMI</li>
+                    </ul>
+
+                    <h3>Thermal Design</h3>
+                    <p>For continuous operation at 7.5kW with 15kHz switching frequency, the estimated power dissipation is approximately 45W. With a thermal resistance Rth(j-c) of 0.4°C/W, the junction temperature rise above case temperature would be 18°C. The heat sink must be sized to keep the case temperature within acceptable limits.</p>
+
+                    <h2>Gate Drive Considerations</h2>
+                    <p>Proper gate drive is critical for optimal IGBT performance in motor drives:</p>
+                    <ul>
+                        <li>Use positive gate voltage of +15V for optimal on-state characteristics</li>
+                        <li>Apply negative gate voltage of -5V to -8V for fast turn-off and noise immunity</li>
+                        <li>Implement gate resistors to control switching speed and reduce voltage overshoot</li>
+                        <li>Consider isolated gate drivers for safety and performance</li>
+                    </ul>
+
+                    <h2>Protection Considerations</h2>
+                    <p>Motor drives require comprehensive protection:</p>
+                    <ul>
+                        <li>Overcurrent protection using desaturation detection</li>
+                        <li>Overtemperature protection with junction temperature monitoring</li>
+                        <li>Overvoltage clamping for inductive load switching</li>
+                        <li>Undervoltage lockout for proper gate drive operation</li>
+                    </ul>
+
+                    <h2>Conclusion</h2>
+                    <p>Selecting the right IXYS IGBT for motor drive applications requires balancing voltage rating, current capability, switching performance, and thermal characteristics. Following the guidelines in this application note will help ensure reliable, efficient operation of your motor drive system. Our FAE team is available to assist with selection and design optimization.</p>
+                </div>
+
+                <div class="related-articles">
+                    <h3>Related Articles</h3>
+                    <div class="related-articles-grid">
+                        <a href="/support/application-notes/thermal-design-ixys-igbts/" class="related-article">
+                            <h4>Thermal Design Considerations for IXYS IGBTs</h4>
+                            <p>Guidelines for effective thermal management of IXYS IGBTs in power applications.</p>
+                        </a>
+                        
+                        <a href="/support/application-notes/ixys-mosfet-motor-control/" class="related-article">
+                            <h4>IXYS Power MOSFETs in Motor Control Applications</h4>
+                            <p>Application guide for using IXYS MOSFETs in low-voltage motor control systems.</p>
+                        </a>
+                        
+                        <a href="/support/application-notes/igbt-gate-drive-best-practices/" class="related-article">
+                            <h4>IGBT Gate Drive Best Practices</h4>
+                            <p>Comprehensive guide to optimizing IGBT gate drive circuits for performance and reliability.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>LiTong Group</h3>
+                    <p>Official authorized IXYS distributor with global sales network and technical expertise.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="#" target="_blank" aria-label="Twitter">Twitter</a>
+                        <a href="#" target="_blank" aria-label="YouTube">YouTube</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/products/">Products</a></li>
+                        <li><a href="/solutions/">Solutions</a></li>
+                        <li><a href="/support/">Support</a></li>
+                        <li><a href="/news/">News</a></li>
+                        <li><a href="/about/">About Us</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="/products/power-mosfets/">Power MOSFETs</a></li>
+                        <li><a href="/products/igbt-modules/">IGBTs & Modules</a></li>
+                        <li><a href="/products/thyristors/">Thyristors (SCRs)</a></li>
+                        <li><a href="/products/rectifier-bridges/">Rectifier Bridges</a></li>
+                        <li><a href="/products/diodes/">Diodes</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <address>
+                        <p><strong>Hong Kong Headquarters</strong><br>
+                        5/F, Green 18, 7 Science Park East Avenue, Hong Kong Science Park, Shatin, Hong Kong<br>
+                        Email: hk@elec-distributor.com</p>
+                        
+                        <p><strong>WhatsApp:</strong> +86 15013702378<br>
+                        <strong>WeChat:</strong> +86 18612518271</p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 LiTong Group. Official authorized IXYS distributor. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="/privacy/">Privacy Policy</a>
+                    <a href="/terms/">Terms of Service</a>
+                    <a href="/sitemap.xml">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../js/main.js"></script>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

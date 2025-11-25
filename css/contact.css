@@ -1,0 +1,211 @@
+/* 
+ * IXYS Distributor Website - Contact Page Styles
+ * Styles for contact forms and information pages
+ */
+
+/* Contact Hero Section */
+.contact-hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  color: white;
+  padding: var(--spacing-3xl) 0;
+  text-align: center;
+}
+
+.contact-hero .container {
+  max-width: 800px;
+}
+
+.contact-content h1 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.contact-content p {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Contact Section */
+.contact-section {
+  padding: var(--spacing-3xl) 0;
+}
+
+.contact-section .container {
+  max-width: 1200px;
+}
+
+/* Contact Methods */
+.contact-methods {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.contact-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--spacing-xl);
+  border: 1px solid var(--light-gray);
+}
+
+.contact-card h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--light-gray);
+}
+
+.contact-info {
+  margin-bottom: var(--spacing-lg);
+}
+
+.contact-info h3 {
+  color: var(--dark-gray);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.contact-info p {
+  margin: var(--spacing-xs) 0;
+  color: var(--neutral-gray);
+}
+
+.contact-info a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-lg);
+}
+
+/* Contact Options */
+.contact-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.contact-option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--dark-gray);
+  transition: var(--transition-normal);
+}
+
+.contact-option:hover {
+  border-color: var(--primary-color);
+  background-color: var(--light-gray);
+  text-decoration: none;
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+}
+
+/* Contact Form */
+.contact-form-section {
+  margin-top: var(--spacing-2xl);
+}
+
+.contact-form-section h2 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.contact-form {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--light-gray);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+  color: var(--dark-gray);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-family: var(--font-primary);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+}
+
+.contact-form button {
+  width: 100%;
+  padding: var(--spacing-md);
+  font-size: 1.125rem;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .contact-content h1 {
+    font-size: 3rem;
+  }
+  
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .form-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-content h1 {
+    font-size: 3.5rem;
+  }
+  
+  .contact-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

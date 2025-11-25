@@ -1,0 +1,162 @@
+/* 
+ * IXYS Distributor Website - About Page Styles
+ * Styles for about us and company information pages
+ */
+
+/* About Hero Section */
+.about-hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  color: white;
+  padding: var(--spacing-3xl) 0;
+  text-align: center;
+}
+
+.about-hero .container {
+  max-width: 800px;
+}
+
+.about-content h1 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.about-content p {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* About Section */
+.about-section {
+  padding: var(--spacing-3xl) 0;
+}
+
+.about-section .container {
+  max-width: 900px;
+}
+
+.about-mission,
+.about-history,
+.about-team {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.about-mission h2,
+.about-history h2,
+.about-values h2,
+.about-team h2,
+.about-certifications h2 {
+  color: var(--dark-gray);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-mission p,
+.about-history p,
+.about-team p {
+  line-height: 1.8;
+  color: var(--neutral-gray);
+}
+
+.about-team ul {
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-lg);
+}
+
+.about-team li {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.6;
+  color: var(--neutral-gray);
+}
+
+/* Values Section */
+.about-values {
+  margin: var(--spacing-2xl) 0;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.value-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+  border: 1px solid var(--light-gray);
+  text-align: center;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.value-card h3 {
+  color: var(--primary-color);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+/* Certifications Section */
+.about-certifications {
+  margin: var(--spacing-2xl) 0;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.certification-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+  border: 1px solid var(--light-gray);
+  text-align: center;
+}
+
+.certification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.certification-card h3 {
+  color: var(--primary-color);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .about-content h1 {
+    font-size: 3rem;
+  }
+  
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .certifications-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-content h1 {
+    font-size: 3.5rem;
+  }
+  
+  .values-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .certifications-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

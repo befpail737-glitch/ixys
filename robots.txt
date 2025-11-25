@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /private/
+Disallow: /temp/
+Disallow: /admin/
+
+Sitemap: https://ixys.elec-distributor.com/sitemap.xml
