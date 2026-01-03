@@ -1,14 +1,34 @@
 /*
  * IXYS Distributor Website - Navigation JavaScript
- * Navigation-specific functionality
+ * Navigation-specific functionality and loading animations
  */
 
 // Initialize navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
+    setupLoadingAnimation();
     setupMobileNavigation();
     setupDropdownMenus();
     setupCurrentPageHighlight();
+    setupHeaderScrollEffect();
 });
+
+// Set up loading animation
+function setupLoadingAnimation() {
+    // Hide loading overlay after page load
+    const loadingOverlay = document.getElementById('loadingOverlay');
+
+    if (loadingOverlay) {
+        // Wait for content to be visible before hiding loading overlay
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                loadingOverlay.classList.add('hidden');
+
+                // Add fade-in class to main content
+                document.querySelector('main')?.classList.add('fade-in');
+            }, 500);
+        });
+    }
+}
 
 // Set up mobile navigation toggle
 function setupMobileNavigation() {
@@ -90,21 +110,48 @@ function setupMobileMenuClosing() {
     });
 }
 
+// Setup header scroll effect
+function setupHeaderScrollEffect() {
+    const header = document.querySelector('.main-header');
+
+    if (header) {
+        let ticking = false;
+
+        function updateHeader() {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+    }
+}
+
 // Initialize the mobile menu closing functionality
 document.addEventListener('DOMContentLoaded', setupMobileMenuClosing);
 
 // Handle keyboard navigation for accessibility
 function setupKeyboardNavigation() {
     const navLinks = document.querySelectorAll('.nav-menu a');
-    
+
     navLinks.forEach((link, index) => {
         // Set tabindex for navigation links
         link.setAttribute('tabindex', '0');
-        
+
         // Handle arrow key navigation
         link.addEventListener('keydown', function(e) {
             let targetIndex;
-            
+
             switch(e.key) {
                 case 'ArrowRight':
                 case 'ArrowDown':
@@ -112,19 +159,19 @@ function setupKeyboardNavigation() {
                     targetIndex = (index + 1) % navLinks.length;
                     navLinks[targetIndex].focus();
                     break;
-                    
+
                 case 'ArrowLeft':
                 case 'ArrowUp':
                     e.preventDefault();
                     targetIndex = (index - 1 + navLinks.length) % navLinks.length;
                     navLinks[targetIndex].focus();
                     break;
-                    
+
                 case 'Home':
                     e.preventDefault();
                     navLinks[0].focus();
                     break;
-                    
+
                 case 'End':
                     e.preventDefault();
                     navLinks[navLinks.length - 1].focus();

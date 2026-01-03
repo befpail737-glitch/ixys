@@ -1,0 +1,123 @@
+/* 12-Column CSS Grid System */
+:root {
+  --grid-columns: 12;
+  --grid-gutter: 30px;
+  --container-padding: 15px;
+  --breakpoint-mobile: 768px;
+  --breakpoint-tablet: 1200px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  box-sizing: border-box;
+}
+
+/* Main Grid System */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  grid-gap: var(--grid-gutter);
+  width: 100%;
+}
+
+/* Grid column classes */
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-5 { grid-column: span 5; }
+.col-6 { grid-column: span 6; }
+.col-7 { grid-column: span 7; }
+.col-8 { grid-column: span 8; }
+.col-9 { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* Responsive behavior */
+@media screen and (max-width: 1199px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+  }
+  
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, 
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    grid-column: span 12;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .grid {
+    grid-gap: 10px;
+  }
+}
+
+/* Flexbox utilities */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  .flex-row {
+    flex-direction: column;
+  }
+  
+  .justify-center {
+    justify-content: flex-start;
+  }
+  
+  .justify-between {
+    justify-content: flex-start;
+  }
+}

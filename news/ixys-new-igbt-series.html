@@ -76,9 +76,29 @@
     <link rel="stylesheet" href="../../css/news.css">
     
     <!-- Google Fonts -->
+    
+    <link rel="stylesheet" href="../css/grid-system.css">
+    <link rel="stylesheet" href="../css/feature-grid.css">
+    <link rel="stylesheet" href="../css/cta-section.css">
+    <link rel="stylesheet" href="../css/animations.css">
+
+    <!-- Preload critical font -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- Optimized Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=optional" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading IXYS Solutions...</div>
+    </div>
+
     <!-- Header with Navigation -->
     <header class="main-header">
         <div class="header-top">
@@ -104,7 +124,7 @@
             <div class="container">
                 <div class="logo">
                     <a href="/" aria-label="LiTong Home">
-                        <img src="../../images/logo.svg" alt="LiTong Logo - Official IXYS Distributor" width="150" height="50">
+                                                <img data-src="../images/logo.svg" data-webp="../images/logo.webp" alt="LiTong Logo - Official IXYS Distributor" width="150" height="50">>
                     </a>
                 </div>
                 
@@ -276,5 +296,8 @@
     <!-- JavaScript -->
     <script src="../../js/main.js"></script>
     <script src="../../js/navigation.js"></script>
+
+    <script src="../js/image-optimization.js"></script>
+
 </body>
 </html>

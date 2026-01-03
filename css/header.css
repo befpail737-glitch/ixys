@@ -1,11 +1,11 @@
-/* 
+/*
  * IXYS Distributor Website - Header Styles
  * Styles for header, navigation, and top contact bar
  */
 
 /* Header Top - Contact Information */
 .header-top {
-  background-color: var(--dark-gray);
+  background-color: var(--primary-color);
   color: white;
   padding: var(--spacing-xs) 0;
   font-size: 0.875rem;
@@ -51,11 +51,18 @@
 
 /* Main Header */
 .main-header {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: var(--transition-normal);
+}
+
+.main-header.scrolled {
+  box-shadow: var(--shadow-md);
+  background-color: rgba(255, 255, 255, 0.98);
 }
 
 .header-main {
@@ -100,7 +107,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
 }
 
 .nav-menu a {
@@ -108,14 +115,31 @@
   color: var(--dark-gray);
   font-weight: 500;
   padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   transition: var(--transition-fast);
+  position: relative;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--secondary-color);
+  transition: var(--transition-fast);
+  transform: translateX(-50%);
+}
+
+.nav-menu a:hover::after,
+.nav-menu a[aria-current="page"]::after {
+  width: 70%;
 }
 
 .nav-menu a:hover,
 .nav-menu a[aria-current="page"] {
-  color: var(--secondary-color);
-  background-color: var(--light-gray);
+  color: var(--primary-color);
 }
 
 /* Breadcrumb */
@@ -157,7 +181,7 @@
   .nav-toggle {
     display: flex;
   }
-  
+
   .nav-menu {
     position: fixed;
     top: 70px;
@@ -172,20 +196,20 @@
     transform: translateY(-150%);
     transition: var(--transition-normal);
   }
-  
+
   .nav-menu.active {
     transform: translateY(0);
   }
-  
+
   .header-top .container {
     flex-direction: column;
     gap: var(--spacing-xs);
   }
-  
+
   .contact-info {
     justify-content: center;
   }
-  
+
   .social-links {
     margin-top: var(--spacing-xs);
   }
@@ -196,7 +220,7 @@
   .contact-info {
     gap: var(--spacing-sm);
   }
-  
+
   .nav-menu {
     gap: var(--spacing-md);
   }
@@ -206,5 +230,9 @@
 @media (min-width: 1024px) {
   .header-top .container {
     flex-direction: row;
+  }
+
+  .nav-menu {
+    gap: var(--spacing-lg);
   }
 }

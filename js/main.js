@@ -1,6 +1,6 @@
 /*
  * IXYS Distributor Website - Main JavaScript
- * General functionality and utility functions
+ * Centralized JavaScript functionality
  */
 
 // DOM Content Loaded Event
@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNavigation();
     initializeAccessibilityFeatures();
     initializePerformanceFeatures();
+    initializeStaggeredAnimations();
 });
 
 // Initialize Navigation
@@ -107,4 +108,55 @@ function smoothScrollTo(target) {
             block: 'start'
         });
     }
+}
+
+// Initialize staggered animations for content that enters the viewport
+function initializeStaggeredAnimations() {
+    // Add staggered animations to elements as they come into view
+    const staggerElements = document.querySelectorAll('.stagger-item');
+
+    if ('IntersectionObserver' in window) {
+        const elementObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        staggerElements.forEach(function(element) {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            elementObserver.observe(element);
+        });
+    } else {
+        // Fallback for browsers that don't support IntersectionObserver
+        staggerElements.forEach(function(element) {
+            element.style.opacity = 1;
+            element.style.transform = 'translateY(0)';
+        });
+    }
+}
+
+// Initialize smooth scrolling for anchor links
+function initializeSmoothScrolling() {
+    // Add smooth scrolling behavior for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
 }
