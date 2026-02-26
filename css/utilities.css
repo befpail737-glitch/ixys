@@ -1,0 +1,46 @@
+/* Utility Classes for IXYS Agent Website */
+
+/* Text Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-weight-normal { font-weight: var(--font-weight-normal); }
+.font-weight-medium { font-weight: var(--font-weight-medium); }
+.font-weight-bold { font-weight: var(--font-weight-bold); }
+
+.text-muted { color: var(--neutral-gray-500); }
+.text-white { color: var(--white); }
+
+/* Background Utilities */
+.bg-light { background-color: var(--neutral-gray-100); }
+.bg-white { background-color: var(--white); }
+
+/* Margin Utilities */
+.m-0 { margin: 0 !important; }
+.mt-0 { margin-top: 0 !important; }
+.mt-3 { margin-top: var(--spacing-lg) !important; }
+.mt-4 { margin-top: var(--spacing-xl) !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mb-2 { margin-bottom: var(--spacing-sm) !important; }
+.mb-3 { margin-bottom: var(--spacing-lg) !important; }
+.mb-4 { margin-bottom: var(--spacing-xl) !important; }
+
+/* Padding Utilities */
+.p-0 { padding: 0 !important; }
+.pt-3 { padding-top: var(--spacing-lg) !important; }
+.pb-3 { padding-bottom: var(--spacing-lg) !important; }
+
+/* Display Utilities */
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-flex { display: flex !important; }
+
+/* Text Utilities */
+.text-center { text-align: center !important; }
+
+/* Responsive Utilities */
+@media (min-width: 768px) {
+  .d-md-none { display: none !important; }
+  .d-md-block { display: block !important; }
+}

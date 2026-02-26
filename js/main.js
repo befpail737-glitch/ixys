@@ -1,162 +1,78 @@
-/*
- * IXYS Distributor Website - Main JavaScript
- * Centralized JavaScript functionality
- */
+// Main JavaScript file for IXYS Agent Website
 
-// DOM Content Loaded Event
+// Mobile Navigation Toggle
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize main functionality
-    initializeNavigation();
-    initializeAccessibilityFeatures();
-    initializePerformanceFeatures();
-    initializeStaggeredAnimations();
+  const navbarToggle = document.querySelector('.js-navbar-toggle');
+  const navbarMenu = document.querySelector('.js-navbar-menu');
+
+  if (navbarToggle && navbarMenu) {
+    navbarToggle.addEventListener('click', function() {
+      navbarMenu.classList.toggle('show');
+    });
+  }
+
+  // Tab functionality
+  const tabContainer = document.querySelector('.js-tab-container');
+  if (tabContainer) {
+    const tabButtons = tabContainer.querySelectorAll('.js-tab-button');
+    const tabPanels = tabContainer.querySelectorAll('.js-tab-panel');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and panels
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabPanels.forEach(panel => panel.classList.remove('active'));
+
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        // Show corresponding panel
+        const targetPanel = document.getElementById(button.dataset.target);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      });
+    });
+  }
+
+  // Accordion functionality
+  const accordionHeaders = document.querySelectorAll('.js-accordion-header');
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', function() {
+      const accordionItem = this.parentElement;
+      const accordionBody = accordionItem.querySelector('.js-accordion-body');
+
+      accordionItem.classList.toggle('active');
+      accordionBody.classList.toggle('show');
+    });
+  });
+
+  // Form submission handling
+  const inquiryForms = document.querySelectorAll('.js-inquiry-form');
+  inquiryForms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Simple validation
+      let isValid = true;
+      const requiredFields = form.querySelectorAll('[required]');
+
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          isValid = false;
+          field.classList.add('is-invalid');
+        } else {
+          field.classList.remove('is-invalid');
+        }
+      });
+
+      if (isValid) {
+        // In a real implementation, you would submit the form
+        alert('Inquiry submitted successfully! Our team will contact you shortly.');
+        form.reset();
+      } else {
+        alert('Please fill in all required fields.');
+      }
+    });
+  });
 });
-
-// Initialize Navigation
-function initializeNavigation() {
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            const isExpanded = navMenu.classList.contains('active');
-            navToggle.setAttribute('aria-expanded', isExpanded);
-        });
-    }
-}
-
-// Initialize Accessibility Features
-function initializeAccessibilityFeatures() {
-    // Add focus indicators for keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Tab') {
-            document.body.classList.add('keyboard-navigation');
-        }
-    });
-    
-    document.addEventListener('mousedown', function() {
-        document.body.classList.remove('keyboard-navigation');
-    });
-    
-    // Ensure landmark roles are properly set
-    ensureLandmarks();
-}
-
-// Ensure landmark roles for accessibility
-function ensureLandmarks() {
-    // Header should have banner role (already set in HTML)
-    // Navigation should have navigation role (already set in HTML)
-    // Main content should have main role (already set in HTML)
-    // Footer should have contentinfo role (already set in HTML)
-    
-    // Add label to search if present
-    const searchInputs = document.querySelectorAll('input[type="search"], input[role="search"]');
-    searchInputs.forEach(input => {
-        if (!input.getAttribute('aria-label')) {
-            input.setAttribute('aria-label', 'Search');
-        }
-    });
-}
-
-// Initialize Performance Features
-function initializePerformanceFeatures() {
-    // Implement lazy loading for images
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-    }
-    
-    // Optimize loading for non-critical CSS
-    loadNonCriticalCSS();
-}
-
-// Load non-critical CSS asynchronously
-function loadNonCriticalCSS() {
-    // In a real implementation, we would load non-critical CSS here
-    // For this static site, all CSS is loaded in the head
-}
-
-// Utility function to check if element is in viewport
-function isElementInViewport(el) {
-    const rect = el.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-}
-
-// Function to handle smooth scrolling
-function smoothScrollTo(target) {
-    if (target) {
-        target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    }
-}
-
-// Initialize staggered animations for content that enters the viewport
-function initializeStaggeredAnimations() {
-    // Add staggered animations to elements as they come into view
-    const staggerElements = document.querySelectorAll('.stagger-item');
-
-    if ('IntersectionObserver' in window) {
-        const elementObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        staggerElements.forEach(function(element) {
-            element.style.opacity = 0;
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            elementObserver.observe(element);
-        });
-    } else {
-        // Fallback for browsers that don't support IntersectionObserver
-        staggerElements.forEach(function(element) {
-            element.style.opacity = 1;
-            element.style.transform = 'translateY(0)';
-        });
-    }
-}
-
-// Initialize smooth scrolling for anchor links
-function initializeSmoothScrolling() {
-    // Add smooth scrolling behavior for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
